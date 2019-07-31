@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block content %}
+<header>
+    <ul>
+        
+        <li><a href = "{{ url_for('showRestaurants')}}">Restaurant Menu</li>
+        <li><a href = "{{ url_for('showLogin')}}">Login</li>
+      </ul>
+</header>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+
+<header>
+    <a href = "{{ url_for('showLogin')}}">Login</a>
+    <strong><b>Restaurants</b></strong>
+    <a href ="{{url_for('gdisconnect')}}">Logout</a>
+</header>
+<div class = 'newRestaurant'><a href = "{{ url_for('newRestaurant')}}">Create New Restaurant</a></div>
+
+
+<div class = 'restaurantGrid'>
+        {% for restaurant in restaurants %}
+        <div class = 'restaurantName'>
+            <a href = "{{ url_for('showMenu', restaurant_id = restaurant.id)}}">{{restaurant.name}}</a>
+        </div>
+        <div class = 'editRestaurant'>
+            <a href = "{{ url_for('editRestaurant', restaurant_id = restaurant.id)}}">Edit</a>
+        </div>
+        <div class = 'deleteRestaurant'>
+            <a href = "{{ url_for('deleteRestaurant', restaurant_id = restaurant.id)}}">Delete</a>
+        </div>
+        {% endfor %}
+</div>
+
+{% endblock %}

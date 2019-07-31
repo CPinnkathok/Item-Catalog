@@ -1,0 +1,122 @@
+body {
+    background-color: #DCC7AA;
+    margin: 0 auto; 
+}
+
+header {
+    background-color: #466995;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+
+ 
+}
+
+
+header a {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    font-size: 16px; 
+    padding: 50px;
+}
+
+b {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px; 
+    color: #ffffff;
+    padding: 50px;
+}
+
+h1{
+        color: #FFF;
+        font-family: 'Oswald', sans-serif;
+        font-size: 32px;
+        top: 100;
+        text-align: center; 
+}
+
+h2 {
+    color: #466995;
+    font-family: 'Oswald', sans-serif;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px 20px 20px 20px;
+}
+
+.newRestaurant {
+        background-color: #DBE9EE;
+        font-family: 'Oswald', sans-serif;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        position: relative;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+}
+
+.restaurantGrid {
+    width: 100%;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 40% 20% 20%;
+}
+
+.restaurantName {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 1000;
+    align-self: center;
+    padding: 15px;
+
+}
+.editRestaurant {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+    padding: 15px;
+    
+
+}
+
+.deleteRestaurant {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+   
+}
+
+.return {
+    
+    background-color:  #466995;
+    box-sizing: border-box;
+
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    
+}
+
+.return a {
+    font-family: 'Oswald', sans-serif;
+    color: #FFF;
+
+}
+
+input[type="submit"] {
+    
+    font-size: 20px;
+
+}
+
+input[type="text"] {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+
+}

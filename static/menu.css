@@ -1,0 +1,189 @@
+body {
+    background-color: #DCC7AA;
+    margin: 0 auto; 
+}
+header {
+    background-color: #466995;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+ 
+}
+
+.newItem {
+    background-color: #DBE9EE;
+    font-family: 'Oswald', sans-serif;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+h1 {
+    color: #FFF;
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    top: 100;
+    text-align: center; 
+}
+
+h3 {
+    color: #466995;
+    font-family: 'Oswald', sans-serif;
+    display: inline-block;
+    position: relative;
+    font-size: 12px;
+    padding: 20px 80px 20px 0px;
+    height: 10px;
+    width: 110px;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.itemlabel {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #466995;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 900;
+    align-self: center;
+    text-decoration: none;
+
+}
+
+.Edits {
+    font-size: 16px;
+    color: #466995;
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+    text-decoration: none;
+
+}
+
+p{
+    padding: 20px 0px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
+
+a {
+    color: #466995;
+    font-size: 16px;
+}
+
+dl{
+    font-family: 'Oswald', sans-serif;
+    background-color: #466995;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+
+.return {
+    
+    background-color:  #466995;
+    box-sizing: border-box;
+    color: #FFF;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    grid-column: 1 / span 4;
+    
+}
+
+.return a {
+    font-family: 'Oswald', sans-serif;
+    color: #FFF;
+
+
+}
+
+.displayMenuGrid {
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    vertical-align: middle;
+}
+
+p {
+    grid-column: 1 / span 4;
+    padding: 10px;
+}
+.editMenuGrid {
+    width: 100%;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: 10% 30% 10% 30% 10%;
+}
+.Name {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+    padding: 15px;
+
+}
+
+.itemNameEntry {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+   
+}
+
+.Description {
+   
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+    padding: 15px;
+}
+
+.itemDescriptionEntry {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+
+}
+
+.Price {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+    padding: 15px;
+
+}
+
+.priceEntry {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+
+}
+
+.Course {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+    padding: 15px;
+
+}
+
+
+.courseOptions {
+    font-family: 'Oswald', sans-serif;
+    align-self: center;
+
+}
+
+.submitButton {
+    align-self: center;
+    padding: 15px;
+    text-align: center;
+}
+
+input[type="submit"] {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+
+}

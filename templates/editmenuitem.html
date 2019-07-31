@@ -1,0 +1,59 @@
+<html>
+<head>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='menu.css') }}">
+	<body>
+
+<header>
+	<h1><strong>Edit Menu Item</strong></h1>
+</header> 
+
+<form action="{{ url_for('editMenuItem',restaurant_id = restaurant_id, menu_id=menu_id)}}" method = 'post'>
+    
+<div class ='editMenuGrid'>
+        <div class ='Name'>Name: </div>
+        <div class = 'itemNameEntry'><input type ='text' size='30' name='name' placeholder = '{{item.name }}'></div> 
+        <div class = 'Description'>Description:</div>
+        <div class = 'itemDescriptionEntry'><textarea name = 'description' rows='5' cols='40' placeholder = '{{item.description }}'></textarea></div>
+        <div class = 'Price'> Price: </div>
+        <div class = 'priceEntry'><input type = 'text' size = '8' name='price' placeholder = '{{item.price}}'></div>
+        <div class = 'Course'>Course:</div>
+        <div class = 'courseOptions'>
+            {% if item.course == 'Appetizier' %}
+            <input type ='radio' name='course' value='Appetizer'checked >Appetizer</input>
+            {%else%}
+            <input type ='radio' name='course' value='Appetizer' >Appetizer</input>
+            {% endif %}
+        
+            {% if item.course == 'Entree' %}
+            <input type ='radio' name='course' value='Entree' checked>Entree</input>
+        
+            {%else%}
+            <input type ='radio' name='course' value='Entree'>Entree</input>
+            {% endif %}
+        
+            {% if item.course == 'Dessert'%}
+            <input type ='radio' name='course' value='Dessert'checked >Dessert</input>
+        
+            {% else %}
+            <input type ='radio' name='course' value='Dessert'>Dessert</input>
+        
+            {% endif %}
+        
+        
+            {%if item.course =='Beverage'%}
+            <input type ='radio' name='course' value='Beverage'checked >Beverage</input>
+            {% else %}
+            <input type ='radio' name='course' value='Beverage'>Beverage</input>
+            {% endif %}
+        </div>
+        <div class = "submitButton"><input type='submit' value='Edit'></div>
+</div>	
+
+
+<div class ='return'><a href = "{{url_for('showMenu', restaurant_id = restaurant_id)}}"> Cancel </a></div>
+
+<div class = 'return'><a href = "{{url_for('showRestaurants')}}">Return to All Restaurants</a></div>
+
+</form>
+</body>
+</html>

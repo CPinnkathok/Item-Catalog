@@ -1,0 +1,41 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='menu.css') }}">
+	</head>
+<body>
+
+<header>
+	<h1><strong>New Menu Item</strong></h1>
+</header> 
+            
+<form action="{{ url_for('newMenuItem',restaurant_id = restaurant_id)}}" method = 'post'>
+
+<div class ='editMenuGrid'>
+        <div class ='Name'>Name: </div>
+        <div class = 'itemNameEntry'><input type ='text' size='30' name='name'></div> 
+        <div class = 'Description'>Description:</div>
+        <div class = 'itemDescriptionEntry'><textarea name = 'description' rows='5' cols='40'></textarea></div>
+        <div class = 'Price'> Price: </div>
+        <div class = 'priceEntry'><input type = 'text' size = '8' name='price' ></div>
+        <div class = 'Course'>Course:</div>
+        <div class = 'courseOptions'>
+            <input type ='radio' name='course' value='Appetizer' >Appetizer</input>
+            <input type ='radio' name='course' value='Entree'>Entree</input>
+            <input type ='radio' name='course' value='Dessert'>Dessert</input>
+            <input type ='radio' name='course' value='Beverage'>Beverage</input>
+        </div>
+		<div class = "submitButton"><input type='submit' value='Create'></div>
+</div>
+<div class ='return'><a href = "{{url_for('showMenu', restaurant_id = restaurant_id)}}"> Cancel </a></div>
+
+</form>
+</div>
+
+</body>
+
+
+
+
+</html>
+
+

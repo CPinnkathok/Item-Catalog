@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='menu.css') }}">
+	</head>
+	<body>
+
+	<header>
+		<h1><strong>{{ restaurant.name }}</strong></h1>
+	</header>
+
+	<div class = 'newItem'><a href = "{{url_for ('newMenuItem', restaurant_id = restaurant.id)}}">Create New Item</a></div>
+
+
+	<div class = 'displayMenuGrid'>
+		{% if not menuItems[0] %}
+			<h2>No menu items for {{restaurant.name}}</h2>
+		{% else %}
+		{% for item in menuItems %}
+		<div class = 'itemlabel'>{{item.name}}</div>
+		<div class = 'itemlabel'>{{item.price}}</div>
+		<div class = 'Edits'><a href="{{url_for('editMenuItem', restaurant_id=restaurant.id, menu_id = item.id)}}" >Edit</a></div>
+		<div class = 'Edits'><a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = item.id)}}" >Delete</a></div>
+		<p>{{item.description}}</p>
+		{% endfor %}
+		{% endif %}	
+		<div class = 'return'><a href = "{{url_for('showRestaurants')}}">Return to All Restaurants</a></div>
+	</div>
+
+
+
+	</body>
+
+
+
+
+</html>
+
+
