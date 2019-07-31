@@ -55,14 +55,14 @@ Set the Authorized Redirect URI:
 Save the credentials and download the key  
 Rename the key to client_secret and copy it to the same folder as the database_setup.py and project.py live  
 
-### Installing
+## Installing
 
-## Run the virtual machine!
+### Run the virtual machine!
 
 Using the terminal, change directory to oauth (**cd oauth**), then type **vagrant up** to launch your virtual machine.
 
 
-## Running the Restaurant Menu App
+### Running the Restaurant Menu App
 Once it is up and running, type **vagrant ssh**. This will log your terminal into the virtual machine, and you'll get a Linux shell prompt. When you want to log out, type **exit** at the shell prompt.  To turn the virtual machine off (without deleting anything), type **vagrant halt**. If you do this, you'll need to run **vagrant up** again before you can log into it.
 
 
@@ -76,16 +76,16 @@ Type **python lotsofmenus.py** to populate the database with a sample of restaur
 
 Type **python project.py** to run the Flask web server. In your browser visit **http://localhost:5000/restaurants** to view the restaurant menu app.  You should be able to view, add, edit, and delete menu items and restaurants.
 
-##JSON Endpoints
+### JSON Endpoints
 The following JSON endpoints have been implemented to allow easier communication from the restaurant database
 
-**http://localhost:5000/restaurants/JSON**
+**http://localhost:5000/restaurants/JSON**:  
 This endpoint will list all the restaurants that are inthe database
 
-**http://localhost:5000/restaurants/<int:restaurant_id>/menu/JSON/**
+**http://localhost:5000/restaurants/<int:restaurant_id>/menu/JSON/**  
 This endpoint will list the menu items for a particular restaurant based on the restaurant_id
 
-**http://localhost:5000/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON/**
+**http://localhost:5000/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON/**:  
 This endpoint will list the the description of a particular menu item for a particular menu based on the restaurant_id and menu_id
 
 
@@ -95,5 +95,5 @@ This endpoint will list the the description of a particular menu item for a part
 
 ## Acknowledgments
 
-* I would like to thank the Udacity Course, Fullstack Web Development, as well as all the students who contributed to the knowledge center and slack channels. Tim Nelson is an amazing mentor and helped me work through a lot of difficult problems. 
+* I would like to thank the Udacity Course, Fullstack Web Development, as well as all the students who contributed to the knowledge center and slack channels. Tim Nelson is an amazing mentor and helped me work through a lot of difficult problems.  
 *Installation and Running sections of ReadMe file taken from OAuth2.0 Read me file from Udacity Course, Fullstack Web Development
