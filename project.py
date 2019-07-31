@@ -35,6 +35,8 @@ APPLICATION_NAME = "Restaurant App"
 # region OAuth login process using Google + API
 
 # Create anti-forgery state token
+
+
 @app.route('/login')
 def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
@@ -44,6 +46,8 @@ def showLogin():
     return render_template('login.html', STATE=state, CLIENT_ID=CLIENT_ID)
 
 # Create GConnect login process
+
+
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
     #  Validate state token
@@ -131,6 +135,8 @@ def gconnect():
 # endregion
 
 # region logout user
+
+
 #  DISCONNECT - Revoke a current user's token and reset their login_session
 @app.route('/gdisconnect')
 def gdisconnect():
@@ -144,7 +150,8 @@ def gdisconnect():
     print 'In gdisconnect access token is %s', access_token
     print 'User name is: '
     print login_session['username']
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % login_session['access_token']
+    url_base = 'https://accounts.google.com/o/oauth2/revoke?token='
+    url = '%s + %s' % (url_base, login_session['access_token'])
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     print 'result is '
@@ -169,12 +176,16 @@ def gdisconnect():
 # Making an API Endpoint (GET Request)
 # region API_Endpoints
 # API Endpoint to show the restaurants in JSON format
+
+
 @app.route('/restaurants/JSON/')
 def restaurantJSON():
     restaurants = session.query(Restaurant).all()
     return jsonify(Restaurants=[i.serialize for i in restaurants])
 
 # API Endpoint to show the menu for a specific restaurant in JSON format
+
+
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON/')
 def restaurantMenuJSON(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
@@ -184,6 +195,8 @@ def restaurantMenuJSON(restaurant_id):
 
 # Making an API Endpoint (GET Request)
 # API Endpoint to show the description of a menu item in JSON format
+
+
 @app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON/')
 def restaurantMenuItemJSON(restaurant_id, menu_id):
     menuItem = session.query(MenuItem).filter_by(id=menu_id).one()
@@ -193,6 +206,8 @@ def restaurantMenuItemJSON(restaurant_id, menu_id):
 
 # region CRUD_Endpoints
 # show all Restaurants
+
+
 @app.route('/restaurants/')
 def showRestaurants():
     restaurants = session.query(Restaurant).all()
@@ -203,6 +218,8 @@ def showRestaurants():
 # Add a restaurant through a Post command
 # will redirect to the page showing all restaurants
 # Only if addition is successful
+
+
 @app.route('/restaurants/new/', methods=['GET', 'POST'])
 def newRestaurant():
     if 'username' not in login_session:
@@ -219,6 +236,8 @@ def newRestaurant():
 # Send the selected restaurant query to the edit restaurant html page
 # add edited restaurant to the database if Post command is sent
 # redirect to the show all restaurant page if edit was successful
+
+
 @app.route('/restaurants/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
 def editRestaurant(restaurant_id):
     if 'username' not in login_session:
@@ -241,6 +260,8 @@ def editRestaurant(restaurant_id):
 # User will then confirm deletion
 # Post command will then be sent to delete the restaurant from the database
 # once deletion completes webpage will redirect to show wall restaurant page
+
+
 @app.route('/restaurants/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
 def deleteRestaurant(restaurant_id):
     if 'username' not in login_session:
@@ -261,6 +282,8 @@ def deleteRestaurant(restaurant_id):
 # ...corresponding to the selected restaurant
 # both queries will be sent to the menu.html template
 # the menu.html page will be displayed to the user
+
+
 @app.route('/restaurants/<int:restaurant_id>/menu/')
 def showMenu(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(
@@ -275,6 +298,8 @@ def showMenu(restaurant_id):
 # once user confirmws new restaurant information a post command will be sent
 # post command will update the restaurant database
 # once complete page redirects to the show Menu page
+
+
 @app.route('/restaurants/<int:restaurant_id>/new/', methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
     if 'username' not in login_session:
@@ -297,7 +322,11 @@ def newMenuItem(restaurant_id):
 # name, description, price and course of a menu item
 # Post command is sent once new edits are confirmed by the user
 # once edits complete the page is redirected to the show Menu page
-@app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/edit/', methods=['GET', 'POST'])
+
+
+@app.route(
+    '/restaurants/<int:restaurant_id>/<int:menu_id>/edit/',
+    methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -327,7 +356,11 @@ def editMenuItem(restaurant_id, menu_id):
 # once item to delete is confirmed by the user
 # post command is sent to update the database
 # page will redirect to the show menu page
-@app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/delete/', methods=['GET', 'POST'])
+
+
+@app.route(
+    '/restaurants/<int:restaurant_id>/<int:menu_id>/delete/',
+    methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')

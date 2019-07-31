@@ -2,7 +2,7 @@
 
 This code will allow the user to create, edit and delete Restaurants and restaurant menu items from a database
 
-# Installing the Vagrant
+## Installing the Vagrant
 
 You'll use a virtual machine (VM) to run a web server and a web app that uses it. The VM is a Linux system that runs on top of your own machine.  You can share files easily between your computer and the VM.
 
@@ -55,6 +55,12 @@ Set the Authorized Redirect URI:
 Save the credentials and download the key  
 Rename the key to client_secret and copy it to the same folder as the database_setup.py and project.py live  
 
+### Required Modules
+This code uses python2  
+The following modules are also needed: Flask, sqlalchemy, oauth2client, and httplib2  
+The requirements.txt file includes all the versions used when developing the application  
+You can run pip install -r requirements.txt to install the required modules  
+
 ## Installing
 
 ### Run the virtual machine!
@@ -79,13 +85,13 @@ Type **python project.py** to run the Flask web server. In your browser visit **
 ### JSON Endpoints
 The following JSON endpoints have been implemented to allow easier communication from the restaurant database
 
-**http://localhost:5000/restaurants/JSON**:  
+**http://localhost:5000/restaurants/JSON**  
 This endpoint will list all the restaurants that are inthe database
 
 **http://localhost:5000/restaurants/<int:restaurant_id>/menu/JSON/**  
 This endpoint will list the menu items for a particular restaurant based on the restaurant_id
 
-**http://localhost:5000/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON/**:  
+**http://localhost:5000/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON/**  
 This endpoint will list the the description of a particular menu item for a particular menu based on the restaurant_id and menu_id
 
 
