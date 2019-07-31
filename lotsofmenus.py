@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import restaurant, Base, MenuItem
+from database_setup import Restaurant, Base, MenuItem
 
 engine = create_engine('sqlite:///restaurantmenu.db')
 # Bind the engine to the metadata of the Base class so that the
@@ -17,7 +17,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Menu for UrbanBurger
-restaurant1 = restaurant(name="Urban Burger")
+restaurant1 = Restaurant(name="Urban Burger")
 
 session.add(restaurant1)
 session.commit()
@@ -197,7 +197,7 @@ session.add(menuItem6)
 session.commit()
 
 # Menu for Panda Garden
-restaurant1 = restaurant(name="Panda Garden")
+restaurant1 = Restaurant(name="Panda Garden")
 
 session.add(restaurant1)
 session.commit()
@@ -273,7 +273,7 @@ session.commit()
 
 
 # Menu for Thyme for that
-restaurant1 = restaurant(name="Thyme for That Vegetarian Cuisine ")
+restaurant1 = Restaurant(name="Thyme for That Vegetarian Cuisine ")
 
 session.add(restaurant1)
 session.commit()
@@ -352,7 +352,7 @@ session.add(menuItem2)
 session.commit()
 
 # Menu for Tony's Bistro
-restaurant1 = restaurant(name="Tony\'s Bistro ")
+restaurant1 = Restaurant(name="Tony\'s Bistro ")
 
 session.add(restaurant1)
 session.commit()
@@ -418,7 +418,7 @@ session.add(menuItem5)
 session.commit()
 
 # Menu for Andala's
-restaurant1 = restaurant(name="Andala\'s")
+restaurant1 = Restaurant(name="Andala\'s")
 
 session.add(restaurant1)
 session.commit()
@@ -479,7 +479,7 @@ session.add(menuItem2)
 session.commit()
 
 # Menu for Auntie Ann's
-restaurant1 = restaurant(
+restaurant1 = Restaurant(
     name="Auntie Ann's Diner' ")
 
 session.add(restaurant1)
@@ -567,7 +567,7 @@ session.add(menuItem10)
 session.commit()
 
 # Menu for Cocina Y Amor
-restaurant1 = restaurant(name="Cocina Y Amor ")
+restaurant1 = Restaurant(name="Cocina Y Amor ")
 
 session.add(restaurant1)
 session.commit()
@@ -599,7 +599,7 @@ session.add(menuItem2)
 session.commit()
 
 
-restaurant1 = restaurant(
+restaurant1 = Restaurant(
     name="State Bird Provisions")
 session.add(restaurant1)
 session.commit()
