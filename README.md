@@ -29,7 +29,7 @@ Vagrant is the software that configures the VM and lets you share files between 
 
 **Windows Note:** The Installer may ask you to grant network permissions to Vagrant or make a firewall exception. Be sure to allow this.
 
-## Fetch the Source Code and VM Configuration
+### Fetch the Source Code and VM Configuration
 
 **Windows:** Use the Git Bash program (installed with Git) to get a Unix-style terminal.  
 **Other systems:** Use your favorite terminal program.
@@ -40,20 +40,20 @@ From the terminal, run:
 
 This will give you a directory named **oauth** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
 
-## Authorization
-You will need to create a client_id in order to log into the Restaurant App through the OAuth Authorization service provided by google
-Go to: **https://console.developers.google.com**
-Create a new project under a verified google email
-Select the project and navigate to the Credentials option under APIs & Services
-Go to OAuth Consent screen and name your application and press save
-Go to the credentials tab and create a new set of OAuth2.0 Credentials for a web application
+### Authorization
+You will need to create a client_id in order to log into the Restaurant App through the OAuth Authorization service provided by google  
+Go to: **https://console.developers.google.com**  
+Create a new project under a verified google email  
+Select the project and navigate to the Credentials option under APIs & Services  
+Go to OAuth Consent screen and name your application and press save  
+Go to the credentials tab and create a new set of OAuth2.0 Credentials for a web application  
 Set the Authorized JavaScript Origins to:
-**http://localhost:5000**
+**http://localhost:5000**  
 Set the Authorized Redirect URI:
-**http://localhost:5000/login**
+**http://localhost:5000/login**  
 
-Save the credentials and download the key
-Rename the key to client_secret and copy it to the same folder as the database_setup.py and project.py live
+Save the credentials and download the key  
+Rename the key to client_secret and copy it to the same folder as the database_setup.py and project.py live  
 
 ### Installing
 
