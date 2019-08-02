@@ -158,7 +158,7 @@ session.add(menuItem3)
 session.commit()
 
 menuItem4 = MenuItem(
-    ame="Nepali Momo ",
+    name="Nepali Momo ",
     description="Steamed dumplings made with vegetables, spices and meat. ",
     price="12",
     course="Entree",
