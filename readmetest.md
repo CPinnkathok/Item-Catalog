@@ -6,7 +6,7 @@ You can visit http://54.71.206.55.xip.io
 
 ## Step by Step Walkthrough
 ### Setup your server in Amazon Lightsail
-1. Create a new Ubuntu Linux Server instance using [Amazon Lightsail](https://lightsail.aws.amazon.com/).
+**1.** Create a new Ubuntu Linux Server instance using [Amazon Lightsail](https://lightsail.aws.amazon.com/).
 * Create an Amazon Web Services account, or log into an existing account
 * Select Create an instance 
 * Select the Linux/Unix Platform 
