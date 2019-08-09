@@ -54,9 +54,9 @@ Select exit
 ```
 * To verify the firewall status type in: ``` sudo ufw status ```
 * Adjust the Lightsail Server
-** Navigate to your server on [Amazon Lightsail](https://lightsail.aws.amazon.com/).
-** Allow ports 2200 (TCP), 80 (TCP) and 123 (UDP)
-** Remove port 22 (TCP)
+	- Navigate to your server on [Amazon Lightsail](https://lightsail.aws.amazon.com/).
+	- Allow ports 2200 (TCP), 80 (TCP) and 123 (UDP)
+	- Remove port 22 (TCP)
 * Exit out of the ubuntu terminal and reconnect by typing in ``` ssh -i ~/.ssh/Default.pem -p 2200 ubuntu@54.71.206.55 ```
 
 ### Create grader user and give appropriate access
@@ -127,10 +127,10 @@ sudo visudo
  sudo nano /etc/apache2/sites-enabled/000-default.conf
  ```
  * Add the following lines above the ServerAdmin line
- ** ServerName 54.71.206.55
- ** ServerAlias ec2-54-71-206-55.us-west-2.compute.amazonaws.com
+	- ServerName 54.71.206.55
+	- ServerAlias ec2-54-71-206-55.us-west-2.compute.amazonaws.com
  * Add the following line before the closing </VirtualHost> tag
- ** WSGIScriptAlias / /var/www/html/myapp.wsgi
+	- WSGIScriptAlias / /var/www/html/myapp.wsgi
  * CTRL+X and Y to save and exit
 15. Install Git
  ```
@@ -175,24 +175,24 @@ sudo chown -R grader:grader html/
 '''
 21. Edit the project files to be able to communicate to the web server
 * Database_setup.py
-** replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
-** CTRL+X and Y to save and exit 
+	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
+	- CTRL+X and Y to save and exit 
 * lotsofmenus.py
-** replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
-** CTRL+X and Y to save and exit 
+	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
+	- CTRL+X and Y to save and exit 
 * project.py
-** replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
-** replace  open('client_secret.json', 'r').read())['web']['client_id'] with open('/var/www/html/client_secret.json', 'r').read())['web']['client_id']
-** replace oauth_flow = flow_from_clientsecrets('client_secret.json', scope='') with oauth_flow = flow_from_clientsecrets('/var/www/html/client_secret.json', scope='')
-** Delete the following lines:
+	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
+	- replace  open('client_secret.json', 'r').read())['web']['client_id'] with open('/var/www/html/client_secret.json', 'r').read())['web']['client_id']
+	- replace oauth_flow = flow_from_clientsecrets('client_secret.json', scope='') with oauth_flow = flow_from_clientsecrets('/var/www/html/client_secret.json', scope='')
+	- Delete the following lines:
     app.secret_key = 'supper secret key'
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=False)
-** in if __name__ == '__main__': add app.run()
-** CTRL+X and Y to save and exit 
+	- in if __name__ == '__main__': add app.run()
+	- CTRL+X and Y to save and exit 
 * myapp.wsgi
-** delete the existing file: ''' sudo rm /var/www/html/myapp.wsgi '''
-** write a new myapp.wsgi file: ''' sudo nano /var/www/html/myapp.wsgi '''
-** In the text editor past the following:
+	- delete the existing file: ''' sudo rm /var/www/html/myapp.wsgi '''
+	- write a new myapp.wsgi file: ''' sudo nano /var/www/html/myapp.wsgi '''
+	- In the text editor past the following:
 #!/usr/bin/env python
 
 import sys
@@ -202,7 +202,7 @@ from project import app as application
 
 application.secret_key = 'super_secret_key'
 
-** CTRL+X and Y to save and exit
+* CTRL+X and Y to save and exit
 
 22. Configure and enable a new virtual host
 *  type in ''' sudo nano /etc/apache2/sites-enabled/000-default.conf '''
@@ -224,7 +224,7 @@ cd /var/www/html
 sudo python database_setup.py
 '''
 * Adjust the id column to the serial type
-** Type the following commands:
+	- Type the following commands:
 '''
 sudo -u postgres psql
 \c restaurantdb
@@ -240,16 +240,16 @@ alter table restaurant add column id serial primary key;
 24. Update Client Secret
 * In [Google Console Developers Page](https://console.developers.google.com/apis/credentials) Update the API Credentials for the client_secret key
 * Go to OAuth Consent Screen and add the following the Authorized domains:
-** ec2-54-71-206-55.us-west-2.compute.amazonaws.com
-** xip.io
-** Save
+	- ec2-54-71-206-55.us-west-2.compute.amazonaws.com
+	- xip.io
+	- Save
 * Go to the credentials tab and select the correct client id
 * Add the following to the Authorized JavaScript Origins:
-** http://54.71.206.55.xip.io
-** http://ec2-54-71-206-55.us-west-2.compute.amazonaws.com
+	- http://54.71.206.55.xip.io
+	- http://ec2-54-71-206-55.us-west-2.compute.amazonaws.com
 * Add the following the Authorized redirect URIs
-** 	http://54.71.206.55.xip.io/login
-** 	http://54.71.206.55.xip.io/gconnect
+	- http://54.71.206.55.xip.io/login
+	- http://54.71.206.55.xip.io/gconnect
 * Save and download the key
 * Copy the contents of the key and connect to the grader ssh terminal
 * ''' sudo nano /var/www/html/client_secret.json ''
