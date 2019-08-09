@@ -55,8 +55,9 @@ sudo ufw allow 123/udp
 sudo ufw deny 22
 sudo ufw enable
 ```
-*Select y
-*Select exit
+
+* Select y
+* Select exit
 
 * To verify the firewall status type in: ``` sudo ufw status ```
 * Adjust the Lightsail Server
@@ -166,7 +167,7 @@ sudo visudo
  * exit by ``` \q ```
 
 **18.** Install pip for python2
- * sudo apt-get python-pip
+ * ``` sudo apt-get python-pip ```
 
 **19.** Install all the needed packages:
 * Type in the following commands:
@@ -195,32 +196,31 @@ sudo chown -R grader:grader html/
 
 **21.** Edit the project files to be able to communicate to the web server
 * Database_setup.py
-	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
+	- replace **engine = create_engine('sqlite:///restaurantmenu.db')** with **engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')**
 	- CTRL+X and Y to save and exit 
 * lotsofmenus.py
-	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
+	- replace **engine = create_engine('sqlite:///restaurantmenu.db')** with **engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')**
 	- CTRL+X and Y to save and exit 
 * project.py
-	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
-	- replace  open('client_secret.json', 'r').read())['web']['client_id'] with open('/var/www/html/client_secret.json', 'r').read())['web']['client_id']
-	- replace oauth_flow = flow_from_clientsecrets('client_secret.json', scope='') with oauth_flow = flow_from_clientsecrets('/var/www/html/client_secret.json', scope='')
+	- replace **engine = create_engine('sqlite:///restaurantmenu.db')** with **engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')**
+	- replace  **open('client_secret.json', 'r').read())['web']['client_id']** with **open('/var/www/html/client_secret.json', 'r').read())['web']['client_id']**
+	- replace **oauth_flow = flow_from_clientsecrets('client_secret.json', scope='')** with **oauth_flow = flow_from_clientsecrets('/var/www/html/client_secret.json', scope='')**
 	- Delete the following lines:
     app.secret_key = 'supper secret key'
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=False)
 	- in if __name__ == '__main__': add app.run()
 	- CTRL+X and Y to save and exit 
 * myapp.wsgi
-	- delete the existing file: ''' sudo rm /var/www/html/myapp.wsgi '''
-	- write a new myapp.wsgi file: ''' sudo nano /var/www/html/myapp.wsgi '''
-	- In the text editor past the following:
+	- delete the existing file: ``` sudo rm /var/www/html/myapp.wsgi ```
+	- write a new myapp.wsgi file: ``` sudo nano /var/www/html/myapp.wsgi ```
+	- In the text editor paste the following:
+```
 #!/usr/bin/env python
-
 import sys
 sys.path.insert(0, "var/www/html")
-
 from project import app as application
-
 application.secret_key = 'super_secret_key'
+```
 
 * CTRL+X and Y to save and exit
 
