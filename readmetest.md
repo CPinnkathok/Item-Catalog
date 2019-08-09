@@ -19,28 +19,28 @@ You can visit http://54.71.206.55.xip.io
 * Download the default key
 * Copy the key to your C:\users\[your user]\.ssh and rename it to Default.pem
 * Launch a command prompt through Git Bash
-* Adjust the access level to the default key by typing in the following command: ''' chmod 600 ~/.ssh/Default.pem '''
+* Adjust the access level to the default key by typing in the following command: ``` chmod 600 ~/.ssh/Default.pem ```
 3. Connect to Server
 * Type in the following command into the prompt: 
-''' ssh -i ~/.ssh/Default.pem ubuntu@54.71.206.55 '''
+``` ssh -i ~/.ssh/Default.pem ubuntu@54.71.206.55 ```
 
 ### Secure the server
 4. Update all system packages to most recent versions
 * In the terminal after connecting with ubuntu run the following commands:
-'''
+```
 sudo apt-get update
 sudo apt-get upgrade
-'''
+```
 5. Change the SSH port to 2200 which is not the default 22
 * Update the sshd_config file
-** Type in ''' sudo nano /etc/ssh/sshd_config '''
+** Type in ``` sudo nano /etc/ssh/sshd_config ```
 ** Uncomment Port 22 and change 22 to 2200
 ** Uncomment PermitRootLogin and set it to not
-** To Save: Hit ''' CTRL+X ''' and select Y
-** Every change to the ssh config file requires a restart to the ssh connection. Do this by typing ''' sudo service ssh restart '''
+** To Save: Hit ``` CTRL+X ``` and select Y
+** Every change to the ssh config file requires a restart to the ssh connection. Do this by typing ``` sudo service ssh restart ```
 6. Configure the Firewall to allow ssh port 2200, udp port 123, and http connections
 * Run the following commands:
-'''
+```
 sudo ufw status
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
@@ -51,81 +51,81 @@ sudo ufw deny 22
 sudo ufw enable
 Select y
 Select exit
-'''
-* To verify the firewall status type in: ''' sudo ufw status '''
+```
+* To verify the firewall status type in: ``` sudo ufw status ```
 * Adjust the Lightsail Server
 ** Navigate to your server on [Amazon Lightsail](https://lightsail.aws.amazon.com/).
 ** Allow ports 2200 (TCP), 80 (TCP) and 123 (UDP)
 ** Remove port 22 (TCP)
-* Exit out of the ubuntu terminal and reconnect by typing in ''' ssh -i ~/.ssh/Default.pem -p 2200 ubuntu@54.71.206.55 '''
+* Exit out of the ubuntu terminal and reconnect by typing in ``` ssh -i ~/.ssh/Default.pem -p 2200 ubuntu@54.71.206.55 ```
 
 ### Create grader user and give appropriate access
 7. Create grader user
 * In ubuntu terminal run the following commands:
-'''
+```
 sudo adduser grader
-'''
+```
 * Set a password
 8. Give grader user sudo access
 * Run the following command:
-'''
+```
 sudo visudo
-'''
+```
 * Under the line ```root ALL=(ALL:ALL) ALL```, add ```grader ALL=(ALL:ALL) ALL```.
 * Save and exit using ```CTRL+X``` and select ```Y``` to save changes. 
 9. Create SSH key for grader
 * Navigate to the .ssh folder
 * Run the following commands:
-'''
+```
  ssh-keygen -f ~/.ssh/grader_key.rsa
  mv grader_key.rsa.pub grader_key.pub
  cat ~/.ssh/grader_key.pub
- '''
+ ```
  * Copy the contents of gradery_key.pub, will need to make a key in the ssh terminal
  * Run the following commands:
- '''
+ ```
  cd /home/grader/
  sudo mkdir .ssh
  sudo nano /home/grader/.ssh/authorized_keys
- '''
+ ```
  * Paste the grader_key.pub contents
  * CTRL+X and Y to save contents
 10. Adjust the access rights to the authorized_keys
  * Send the following commands:
- '''
+ ```
  sudo chmod 700 /home/grader/.ssh
  sudo chmod 644 /home/grader/.ssh/authorized_keys
  sudo chown -R grader:grader /home/grader/.ssh
  sudo service ssh restart
- '''
+ ```
  * Exit out of the ubuntu terminal and reconnect into the grader terminal by typing in: 
- '''
+ ```
  ssh -i ~/.ssh/grader_key.rsa -p 2200 grader@54.71.206.55
- '''
+ ```
  ### Prepare to deploy project to the web server
 11. Install python
  * python3 comes default with the application to install python 2 run the following command:
- '''
+ ```
  sudo apt install python
- '''
+ ```
 12. Install Apache
  * While logged into the grader terminal run the command: 
- '''
+ ```
  sudo apt-get install apache2
- '''
+ ```
  * Verify that apache was installed correctly by typing in 54.71.206.55 in a web browser
 13. Install the python2 WSGI package that will allow python to communicate to the web server
  * Run the commands
- '''
+ ```
  sudo apt-get install libapache2-mod-wsgi
  sudo a2enmod wsgi
  sudo service apache2 start
- '''
+ ```
 14. Configure application to read the correct wsgi file
  * Edit the default config file by running the following command:
- '''
+ ```
  sudo nano /etc/apache2/sites-enabled/000-default.conf
- '''
+ ```
  * Add the following lines above the ServerAdmin line
  ** ServerName 54.71.206.55
  ** ServerAlias ec2-54-71-206-55.us-west-2.compute.amazonaws.com
@@ -133,11 +133,11 @@ sudo visudo
  ** WSGIScriptAlias / /var/www/html/myapp.wsgi
  * CTRL+X and Y to save and exit
 15. Install Git
- '''
+ ```
  sudo apt-get install git
- '''
+ ```
  16. Install Postgres
- * Type in ''' sudo apt-get install postgresql '''
+ * Type in ``` sudo apt-get install postgresql ```
  17. Log into postgres and create a database and grant a user access
  * In grader terminal type in: 
  '''
@@ -261,9 +261,11 @@ alter table restaurant add column id serial primary key;
 * In the web browser go to http://54.71.206.55.xip.io
 * You will see the list of restaurant items created by the lotsofmenus.py script, you can now login with the authorized google user to edit the exiting restaurants or add new ones
 
- 
-
-
+### Authors
+* Christine Pinnkathok
+### Acknowledgments
+* I would like to thank the Udacity Course, Fullstack Web Development, as well as all the students who contributed to the knowledge center and slack channels. Tim Nelson is an amazing mentor and helped me work through a lot of difficult problems.
+* Special thanks to [kcalata](https://github.com/kcalata/Linux-Server-Configuration/blob/master/README.md) for his detailed README
  
  
  
