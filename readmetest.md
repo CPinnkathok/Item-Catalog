@@ -156,21 +156,21 @@ sudo visudo
 
 **17.** Log into postgres and create a database and grant a user access
  * In grader terminal type in: 
- '''
+ ```
  sudo -u postgres psql
  create database restaurantdb
  create role catalog_user with password 'pw';
  \c restaurantdb
  grant all privileges on database restaurandb to catalog_user;
- '''
- * exit by ''' \q '''
+ ```
+ * exit by ``` \q ```
 
 **18.** Install pip for python2
  * sudo apt-get python-pip
 
 **19.** Install all the needed packages:
 * Type in the following commands:
-'''
+```
 sudo pip install sqlalchemy
 sudo pip install httplib2
 sudo apt-get install python-psycopg2
@@ -181,17 +181,17 @@ sudo pip install flask-sqlalchemy
 sudo pip install requests
 sudo pip install --upgrade oauth2client
 sudo pip install psycopg2
-'''
+```
 
 ### Connect Item-Catalog Project
 
 **20.** Clone and setup my Item-Catalog project
 * Log into the grader terminal and run the following commands:
-'''
+```
 cd /var/www/html/
 sudo git clone https://github.com/CPinnkathok/Item-Catalog.git
 sudo chown -R grader:grader html/
-'''
+```
 
 **21.** Edit the project files to be able to communicate to the web server
 * Database_setup.py
@@ -225,7 +225,7 @@ application.secret_key = 'super_secret_key'
 * CTRL+X and Y to save and exit
 
 **22.** Configure and enable a new virtual host
-*  type in ''' sudo nano /etc/apache2/sites-enabled/000-default.conf '''
+*  type in ``` sudo nano /etc/apache2/sites-enabled/000-default.conf ```
 * After the WSGIScriptAlias line paste the following:
         <Directory /var/www/html/static/>
                 Order allow,deny
@@ -239,13 +239,13 @@ application.secret_key = 'super_secret_key'
 
 **23.** Setup the restaurant database
 * Run the following commands:
-'''
+```
 cd /var/www/html
 sudo python database_setup.py
-'''
+```
 * Adjust the id column to the serial type
 	- Type the following commands:
-'''
+```
 sudo -u postgres psql
 \c restaurantdb
 alter table menu_item drop column id cascade;
@@ -253,8 +253,8 @@ alter table restaurant drop column id cascade;
 alter table menu_item add column id serial primary key;
 alter table restaurant add column id serial primary key;
 \q
-'''
-* Add the initial dataset by: ''' sudo python lotsofmenus.py '''
+```
+* Add the initial dataset by: ``` sudo python lotsofmenus.py ```
 
 ### Update Google Credentials
 
@@ -273,12 +273,12 @@ alter table restaurant add column id serial primary key;
 	- http://54.71.206.55.xip.io/gconnect
 * Save and download the key
 * Copy the contents of the key and connect to the grader ssh terminal
-* ''' sudo nano /var/www/html/client_secret.json ''
+* ``` sudo nano /var/www/html/client_secret.json ```
 * paste the key
 * CTRL+X and y to save and exit
 
 ### Run the application
-* In the grader terminal: ''' sudo service apache2 restart '''
+* In the grader terminal: ``` sudo service apache2 restart ```
 * In the web browser go to http://54.71.206.55.xip.io
 * You will see the list of restaurant items created by the lotsofmenus.py script, you can now login with the authorized google user to edit the exiting restaurants or add new ones
 
