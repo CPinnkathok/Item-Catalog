@@ -2,7 +2,7 @@
 
 The Linux Server Configuration project was the last project for the Udacity Full Stack Nanodegree program. The goal of this project was to create a web application that would use Item-Catalog application developed earlier in the course. The directions below will outline how to create a Lnux server and deploy the Item-Catalog application. 
 
-You can visit http://54.71.206.55.xip.io
+You can visit http://54.71.206.55.xip.io/restaurants
 
 ## Step by Step Walkthrough
 ### Setup your server in Amazon Lightsail
@@ -279,7 +279,7 @@ alter table restaurant add column id serial primary key;
 
 ### Run the application
 * In the grader terminal: ``` sudo service apache2 restart ```
-* In the web browser go to http://54.71.206.55.xip.io
+* In the web browser go to http://54.71.206.55.xip.io/restaurants
 * You will see the list of restaurant items created by the lotsofmenus.py script, you can now login with the authorized google user to edit the exiting restaurants or add new ones
 
 ### Authors
