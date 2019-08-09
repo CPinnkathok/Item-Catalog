@@ -33,11 +33,11 @@ sudo apt-get upgrade
 ```
 5. Change the SSH port to 2200 which is not the default 22
 * Update the sshd_config file
-	** Type in ``` sudo nano /etc/ssh/sshd_config ```
-	** Uncomment Port 22 and change 22 to 2200
-	** Uncomment PermitRootLogin and set it to not
-	** To Save: Hit ``` CTRL+X ``` and select Y
-	** Every change to the ssh config file requires a restart to the ssh connection. Do this by typing ``` sudo service ssh restart ```
+	- Type in ``` sudo nano /etc/ssh/sshd_config ```
+	- Uncomment Port 22 and change 22 to 2200
+	- Uncomment PermitRootLogin and set it to not
+	- To Save: Hit ``` CTRL+X ``` and select Y
+	- Every change to the ssh config file requires a restart to the ssh connection. Do this by typing ``` sudo service ssh restart ```
 6. Configure the Firewall to allow ssh port 2200, udp port 123, and http connections
 * Run the following commands:
 ```
