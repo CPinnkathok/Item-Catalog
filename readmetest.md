@@ -14,31 +14,36 @@ You can visit http://54.71.206.55.xip.io
 * Select an Instance Plan, the cheapest option will suffice for this program
 * Name the Instance and select "Create Instance"
 * Select your instance, the Public IP adresss will be displayed this is the IP address that will be used to connect the web application
-2. Get default key that will be used to ssh into the server
+
+**2.** Get default key that will be used to ssh into the server
 * Select the Account Page link in blue on the Connect tab ("You configured this instance to use default (us-west-2) key pair. You can downoad your default private key from the Account page)
 * Download the default key
 * Copy the key to your C:\\users\\[your user]\\.ssh and rename it to Default.pem
 * Launch a command prompt through Git Bash
 * Adjust the access level to the default key by typing in the following command: ``` chmod 600 ~/.ssh/Default.pem ```
-3. Connect to Server
+
+**3.** Connect to Server
 * Type in the following command into the prompt: 
 ``` ssh -i ~/.ssh/Default.pem ubuntu@54.71.206.55 ```
 
 ### Secure the server
-4. Update all system packages to most recent versions
+
+**4.** Update all system packages to most recent versions
 * In the terminal after connecting with ubuntu run the following commands:
 ```
 sudo apt-get update
 sudo apt-get upgrade
 ```
-5. Change the SSH port to 2200 which is not the default 22
+
+**5.** Change the SSH port to 2200 which is not the default 22
 * Update the sshd_config file
 	- Type in ``` sudo nano /etc/ssh/sshd_config ```
 	- Uncomment Port 22 and change 22 to 2200
 	- Uncomment PermitRootLogin and set it to not
 	- To Save: Hit ``` CTRL+X ``` and select Y
 	- Every change to the ssh config file requires a restart to the ssh connection. Do this by typing ``` sudo service ssh restart ```
-6. Configure the Firewall to allow ssh port 2200, udp port 123, and http connections
+
+**6.** Configure the Firewall to allow ssh port 2200, udp port 123, and http connections
 * Run the following commands:
 ```
 sudo ufw status
@@ -49,9 +54,10 @@ sudo ufw allow www
 sudo ufw allow 123/udp
 sudo ufw deny 22
 sudo ufw enable
-Select y
-Select exit
 ```
+*Select y
+*Select exit
+
 * To verify the firewall status type in: ``` sudo ufw status ```
 * Adjust the Lightsail Server
 	- Navigate to your server on [Amazon Lightsail](https://lightsail.aws.amazon.com/).
@@ -60,7 +66,8 @@ Select exit
 * Exit out of the ubuntu terminal and reconnect by typing in ``` ssh -i ~/.ssh/Default.pem -p 2200 ubuntu@54.71.206.55 ```
 
 ### Create grader user and give appropriate access
-7. Create grader user
+
+**7.** Create grader user
 * In ubuntu terminal run the following commands:
 ```
 sudo adduser grader
@@ -73,7 +80,8 @@ sudo visudo
 ```
 * Under the line ```root ALL=(ALL:ALL) ALL```, add ```grader ALL=(ALL:ALL) ALL```.
 * Save and exit using ```CTRL+X``` and select ```Y``` to save changes. 
-9. Create SSH key for grader
+
+**9.** Create SSH key for grader
 * Navigate to the .ssh folder
 * Run the following commands:
 ```
@@ -90,7 +98,8 @@ sudo visudo
  ```
  * Paste the grader_key.pub contents
  * CTRL+X and Y to save contents
-10. Adjust the access rights to the authorized_keys
+
+**10.** Adjust the access rights to the authorized_keys
  * Send the following commands:
  ```
  sudo chmod 700 /home/grader/.ssh
@@ -103,25 +112,29 @@ sudo visudo
  ssh -i ~/.ssh/grader_key.rsa -p 2200 grader@54.71.206.55
  ```
  ### Prepare to deploy project to the web server
-11. Install python
+
+**11.** Install python
  * python3 comes default with the application to install python 2 run the following command:
  ```
  sudo apt install python
  ```
-12. Install Apache
+ 
+**12.** Install Apache
  * While logged into the grader terminal run the command: 
  ```
  sudo apt-get install apache2
  ```
  * Verify that apache was installed correctly by typing in 54.71.206.55 in a web browser
-13. Install the python2 WSGI package that will allow python to communicate to the web server
+
+**13.** Install the python2 WSGI package that will allow python to communicate to the web server
  * Run the commands
  ```
  sudo apt-get install libapache2-mod-wsgi
  sudo a2enmod wsgi
  sudo service apache2 start
  ```
-14. Configure application to read the correct wsgi file
+
+**14.** Configure application to read the correct wsgi file
  * Edit the default config file by running the following command:
  ```
  sudo nano /etc/apache2/sites-enabled/000-default.conf
@@ -132,13 +145,16 @@ sudo visudo
  * Add the following line before the closing </VirtualHost> tag
 	- WSGIScriptAlias / /var/www/html/myapp.wsgi
  * CTRL+X and Y to save and exit
-15. Install Git
+
+**15.** Install Git
  ```
  sudo apt-get install git
  ```
- 16. Install Postgres
+
+**16.** Install Postgres
  * Type in ``` sudo apt-get install postgresql ```
- 17. Log into postgres and create a database and grant a user access
+
+**17.** Log into postgres and create a database and grant a user access
  * In grader terminal type in: 
  '''
  sudo -u postgres psql
@@ -148,9 +164,11 @@ sudo visudo
  grant all privileges on database restaurandb to catalog_user;
  '''
  * exit by ''' \q '''
-18. Install pip for python2
+
+**18.** Install pip for python2
  * sudo apt-get python-pip
-19. Install all the needed packages:
+
+**19.** Install all the needed packages:
 * Type in the following commands:
 '''
 sudo pip install sqlalchemy
@@ -166,14 +184,16 @@ sudo pip install psycopg2
 '''
 
 ### Connect Item-Catalog Project
-20. Clone and setup my Item-Catalog project
+
+**20.** Clone and setup my Item-Catalog project
 * Log into the grader terminal and run the following commands:
 '''
 cd /var/www/html/
 sudo git clone https://github.com/CPinnkathok/Item-Catalog.git
 sudo chown -R grader:grader html/
 '''
-21. Edit the project files to be able to communicate to the web server
+
+**21.** Edit the project files to be able to communicate to the web server
 * Database_setup.py
 	- replace engine = create_engine('sqlite:///restaurantmenu.db') with engine = create_engine('postgresql://catalog_user:pw@localhost/restaurantdb')
 	- CTRL+X and Y to save and exit 
@@ -204,7 +224,7 @@ application.secret_key = 'super_secret_key'
 
 * CTRL+X and Y to save and exit
 
-22. Configure and enable a new virtual host
+**22.** Configure and enable a new virtual host
 *  type in ''' sudo nano /etc/apache2/sites-enabled/000-default.conf '''
 * After the WSGIScriptAlias line paste the following:
         <Directory /var/www/html/static/>
@@ -217,7 +237,7 @@ application.secret_key = 'super_secret_key'
         </Directory>
 * CTRL+X and y to save and exit
 
-23. Setup the restaurant database
+**23.** Setup the restaurant database
 * Run the following commands:
 '''
 cd /var/www/html
@@ -237,7 +257,8 @@ alter table restaurant add column id serial primary key;
 * Add the initial dataset by: ''' sudo python lotsofmenus.py '''
 
 ### Update Google Credentials
-24. Update Client Secret
+
+**24.** Update Client Secret
 * In [Google Console Developers Page](https://console.developers.google.com/apis/credentials) Update the API Credentials for the client_secret key
 * Go to OAuth Consent Screen and add the following the Authorized domains:
 	- ec2-54-71-206-55.us-west-2.compute.amazonaws.com
