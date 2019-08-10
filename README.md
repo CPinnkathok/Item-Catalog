@@ -36,9 +36,7 @@ Vagrant is the software that configures the VM and lets you share files between 
 
 From the terminal, run:
 
-    ```
 	https://github.com/CPinnkathok/Item-Catalog.git Item-Catalog
-	```
 	
 This will give you a directory named **Item-Catalog** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
 
