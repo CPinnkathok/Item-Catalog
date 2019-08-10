@@ -37,10 +37,10 @@ Vagrant is the software that configures the VM and lets you share files between 
 From the terminal, run:
 
     ```
-	git clone https://github.com/udacity/OAuth2.0 oauth
+	https://github.com/CPinnkathok/Item-Catalog.git Item-Catalog
 	```
 	
-This will give you a directory named **oauth** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
+This will give you a directory named **Item-Catalog** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
 
 ### Authorization
 * You will need to create a client_id in order to log into the Restaurant App through the OAuth Authorization service provided by google  
@@ -67,7 +67,7 @@ This will give you a directory named **oauth** complete with the source code for
 
 ### Run the virtual machine!
 
-Using the terminal, change directory to oauth ``` cd oauth ```, then type ``` vagrant up ``` to launch your virtual machine.
+Using the terminal, change directory to Item-Catalog ``` cd Item-Catalog ```, then type ``` vagrant up ``` to launch your virtual machine.
 
 
 ### Running the Restaurant Menu App
