@@ -17,7 +17,9 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Menu for UrbanBurger
-restaurant1 = Restaurant(name="Urban Burger")
+restaurant1 = Restaurant(
+    name="Urban Burger",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant1)
 session.commit()
@@ -27,7 +29,8 @@ menuItem2 = MenuItem(
     description="Juicy grilled veggie patty with tomato mayo and lettuce",
     price="$7.50",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -38,7 +41,8 @@ menuItem1 = MenuItem(
     description="with garlic and parmesan",
     price="$2.99",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -48,7 +52,8 @@ menuItem2 = MenuItem(
     description="Juicy grilled chicken patty with tomato mayo and lettuce",
     price="$5.50",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -58,7 +63,8 @@ menuItem3 = MenuItem(
     description="fresh baked and served with ice cream",
     price="$3.99",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -68,7 +74,8 @@ menuItem4 = MenuItem(
     description="Made with grade A beef",
     price="$7.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -78,7 +85,8 @@ menuItem5 = MenuItem(
     description="16oz of refreshing goodness",
     price="$1.99",
     course="Beverage",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem5)
 session.commit()
@@ -88,7 +96,8 @@ menuItem6 = MenuItem(
     description="with Lemon",
     price="$.99",
     course="Beverage",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem6)
 session.commit()
@@ -98,7 +107,8 @@ menuItem7 = MenuItem(
     description="On texas toast with American Cheese",
     price="$3.49",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem7)
 session.commit()
@@ -108,13 +118,16 @@ menuItem8 = MenuItem(
     description="Made with freshest of ingredients and home grown spices",
     price="$5.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem8)
 session.commit()
 
 # Menu for Super Stir Fry
-restaurant2 = Restaurant(name="Super Stir Fry")
+restaurant2 = Restaurant(
+    name="Super Stir Fry",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant2)
 session.commit()
@@ -125,7 +138,8 @@ menuItem1 = MenuItem(
     description="With your choice of noodles vegetables and sauces",
     price="$7.99",
     course="Entree",
-    restaurant=restaurant2)
+    restaurant=restaurant2,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -141,7 +155,8 @@ menuItem2 = MenuItem(
         'diners by the cook'),
     price="$25",
     course="Entree",
-    restaurant=restaurant2)
+    restaurant=restaurant2,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -153,7 +168,8 @@ menuItem3 = MenuItem(
         'cucumber with wasabi soy sauce'),
     price="15",
     course="Entree",
-    restaurant=restaurant2)
+    restaurant=restaurant2,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -163,7 +179,8 @@ menuItem4 = MenuItem(
     description="Steamed dumplings made with vegetables, spices and meat. ",
     price="12",
     course="Entree",
-    restaurant=restaurant2)
+    restaurant=restaurant2,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -176,7 +193,8 @@ menuItem5 = MenuItem(
         'vegetables and Chinese noodles.'),
     price="14",
     course="Entree",
-    restaurant=restaurant2)
+    restaurant=restaurant2,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem5)
 session.commit()
@@ -192,13 +210,16 @@ menuItem6 = MenuItem(
         'dried seaweed, kamaboko, and green onions.'),
     price="12",
     course="Entree",
-    restaurant=restaurant2)
+    restaurant=restaurant2,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem6)
 session.commit()
 
 # Menu for Panda Garden
-restaurant1 = Restaurant(name="Panda Garden")
+restaurant1 = Restaurant(
+    name="Panda Garden",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant1)
 session.commit()
@@ -212,7 +233,8 @@ menuItem1 = MenuItem(
         'a few herbs, and meat.'),
     price="$8.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -226,7 +248,8 @@ menuItem2 = MenuItem(
         'The skin can be either thin and elastic or thicker.'),
     price="$6.99",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -243,7 +266,8 @@ menuItem3 = MenuItem(
         'gyoza wrappers are much thinner'),
     price="$9.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -255,7 +279,8 @@ menuItem4 = MenuItem(
         'fermented tofu served with pickled cabbage.'),
     price="$6.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -267,14 +292,17 @@ menuItem2 = MenuItem(
         'with tomato mayo and lettuce'),
     price="$9.50",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
 
 
 # Menu for Thyme for that
-restaurant1 = Restaurant(name="Thyme for That Vegetarian Cuisine ")
+restaurant1 = Restaurant(
+    name="Thyme for That Vegetarian Cuisine ",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant1)
 session.commit()
@@ -288,7 +316,8 @@ menuItem1 = MenuItem(
         'cream and strawberries.'),
     price="$2.99",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -298,7 +327,8 @@ menuItem2 = MenuItem(
     description="Portabello mushrooms in a creamy risotto",
     price="$5.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -311,7 +341,8 @@ menuItem3 = MenuItem(
         'cream, and freshly made mochi'),
     price="$4.50",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -324,7 +355,8 @@ menuItem4 = MenuItem(
         'celery, chilies,ginger & green onions'),
     price="$6.95",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -337,7 +369,8 @@ menuItem5 = MenuItem(
         'and chutney. Nom Nom'),
     price="$7.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem5)
 session.commit()
@@ -347,13 +380,16 @@ menuItem2 = MenuItem(
     description="Juicy grilled veggie patty with tomato mayo and lettuce",
     price="$6.80",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
 
 # Menu for Tony's Bistro
-restaurant1 = Restaurant(name="Tony\'s Bistro ")
+restaurant1 = Restaurant(
+    name="Tony's Bistro ",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant1)
 session.commit()
@@ -366,7 +402,8 @@ menuItem1 = MenuItem(
         'crawfish, stacked into a delicious tower'),
     price="$13.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -376,7 +413,8 @@ menuItem2 = MenuItem(
     description="Chicken... and rice",
     price="$4.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -386,7 +424,8 @@ menuItem3 = MenuItem(
     description="Spaghetti with some incredible tomato sauce made by mom",
     price="$6.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -401,7 +440,8 @@ menuItem4 = MenuItem(
         'Liquid nitrogen magic'),
     price="$3.95",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -413,7 +453,8 @@ menuItem5 = MenuItem(
         'broth with a soft-boiled egg'),
     price="$7.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem5)
 session.commit()
@@ -432,7 +473,8 @@ menuItem1 = MenuItem(
         'onions and alllll those tasty Indian spices. Mmmm.'),
     price="$9.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -442,7 +484,8 @@ menuItem2 = MenuItem(
     description="Chicken cooked in Marsala wine sauce with mushrooms",
     price="$7.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -454,7 +497,8 @@ menuItem3 = MenuItem(
         'veggies encapsulated in fried dough.'),
     price="$6.50",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -464,7 +508,8 @@ menuItem4 = MenuItem(
     description="Maguro, Sake, Hamachi, Unagi, Uni, TORO!",
     price="$6.75",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -474,14 +519,16 @@ menuItem2 = MenuItem(
     description="Juicy grilled veggie patty with tomato mayo and lettuce",
     price="$7.00",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
 
 # Menu for Auntie Ann's
 restaurant1 = Restaurant(
-    name="Auntie Ann's Diner' ")
+    name="Auntie Ann's Diner' ",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant1)
 session.commit()
@@ -493,7 +540,8 @@ menuItem9 = MenuItem(
         'fried and smothered with cream gravy'),
     price="$8.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem9)
 session.commit()
@@ -505,7 +553,8 @@ menuItem1 = MenuItem(
         'berries turned into frozen (and seedless) awesomeness'),
     price="$2.99",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -517,7 +566,8 @@ menuItem2 = MenuItem(
         'fresh herbs and broiled hot & fast'),
     price="$10.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -529,7 +579,8 @@ menuItem3 = MenuItem(
         'served on herbed toast slices'),
     price="$7.50",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem3)
 session.commit()
@@ -542,7 +593,8 @@ menuItem4 = MenuItem(
         'oven which gets its heat from burning charcoal.'),
     price="$8.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem4)
 session.commit()
@@ -552,7 +604,8 @@ menuItem2 = MenuItem(
     description="Juicy grilled veggie patty with tomato mayo and lettuce",
     price="$9.50",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
@@ -562,13 +615,16 @@ menuItem10 = MenuItem(
     description="vanilla ice cream made with organic spinach leaves",
     price="$1.99",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem10)
 session.commit()
 
 # Menu for Cocina Y Amor
-restaurant1 = Restaurant(name="Cocina Y Amor ")
+restaurant1 = Restaurant(
+    name="Cocina Y Amor ",
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(restaurant1)
 session.commit()
@@ -581,7 +637,8 @@ menuItem1 = MenuItem(
         'Avocado, Cilantro, Salsa, Tortilla'),
     price="$5.95",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -594,14 +651,16 @@ menuItem2 = MenuItem(
         'or queso de mano, and possibly lechon. '),
     price="$7.99",
     course="Entree",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem2)
 session.commit()
 
 
 restaurant1 = Restaurant(
-    name="State Bird Provisions")
+    name="State Bird Provisions",
+    email="christine.pinnkathok1@gmail.com")
 session.add(restaurant1)
 session.commit()
 
@@ -612,7 +671,8 @@ menuItem1 = MenuItem(
         'slathered with buttery chantrelle mushrooms'),
     price="$5.95",
     course="Appetizer",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit
@@ -624,7 +684,8 @@ menuItem1 = MenuItem(
         'with spicey Italian Pork Jowl (guanciale)'),
     price="$6.95",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()
@@ -637,7 +698,8 @@ menuItem1 = MenuItem(
         'cardamom meringue and cashews'),
     price="$4.25",
     course="Dessert",
-    restaurant=restaurant1)
+    restaurant=restaurant1,
+    email="christine.pinnkathok1@gmail.com")
 
 session.add(menuItem1)
 session.commit()

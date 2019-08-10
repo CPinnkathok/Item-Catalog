@@ -150,8 +150,9 @@ def gdisconnect():
     print 'In gdisconnect access token is %s', access_token
     print 'User name is: '
     print login_session['username']
-    url_base = 'https://accounts.google.com/o/oauth2/revoke?token='
-    url = '%s + %s' % (url_base, login_session['access_token'])
+    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % (
+        login_session['access_token']
+    )
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     print 'result is '
@@ -170,6 +171,7 @@ def gdisconnect():
             json.dumps('Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
         return response
+
 # endregion
 
 
@@ -212,7 +214,8 @@ def restaurantMenuItemJSON(restaurant_id, menu_id):
 def showRestaurants():
     restaurants = session.query(Restaurant).all()
     return render_template(
-        'restaurants.html', restaurants=restaurants,
+        'restaurants.html',
+        restaurants=restaurants,
         login_session=login_session)
 
 # Add a restaurant through a Post command
@@ -222,10 +225,14 @@ def showRestaurants():
 
 @app.route('/restaurants/new/', methods=['GET', 'POST'])
 def newRestaurant():
+    # Authentication check
     if 'username' not in login_session:
         return redirect('/login')
+
     if request.method == 'POST':
-        newRestaurant = Restaurant(name=request.form['name'])
+        newRestaurant = Restaurant(
+            name=request.form['name'],
+            email=login_session['email'])
         session.add(newRestaurant)
         session.commit()
         flash("New Restaurant Created")
@@ -240,14 +247,20 @@ def newRestaurant():
 
 @app.route('/restaurants/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
 def editRestaurant(restaurant_id):
+    # Authentication
     if 'username' not in login_session:
         return redirect('/login')
+
     editedRestaurant = session.query(
         Restaurant).filter_by(id=restaurant_id).one()
+    # Add Authorization
+    if editedRestaurant.email != login_session['email']:
+        return render_template('notauthorized.html')
 
     if request.method == 'POST':
         if request.form['name']:
             editedRestaurant.name = request.form['name']
+            editedRestaurant.email = login_session['email']
             session.add(editedRestaurant)
             session.commit()
             flash("Restaurant Successfully Edited")
@@ -264,9 +277,15 @@ def editRestaurant(restaurant_id):
 
 @app.route('/restaurants/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
 def deleteRestaurant(restaurant_id):
+    # Authentication
     if 'username' not in login_session:
         return redirect('/login')
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+
+    # Authorization
+    if restaurant.email != login_session['email']:
+        return render_template('notauthorized.html')
+
     if request.method == "POST":
         session.delete(restaurant)
         session.commit()
@@ -310,7 +329,8 @@ def newMenuItem(restaurant_id):
             description=request.form['description'],
             price=request.form['price'],
             course=request.form['course'],
-            restaurant_id=restaurant_id)
+            restaurant_id=restaurant_id,
+            email=login_session['email'])
         session.add(newItem)
         session.commit()
         flash("New Menu Item Created")
@@ -328,9 +348,13 @@ def newMenuItem(restaurant_id):
     '/restaurants/<int:restaurant_id>/<int:menu_id>/edit/',
     methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
+    # Implement Authentication
     if 'username' not in login_session:
         return redirect('/login')
     editedItem = session.query(MenuItem).filter_by(id=menu_id).one()
+    # Implement Authorization
+    if editedItem.email != login_session['email']:
+        return render_template('notauthorized.html')
 
     if request.method == 'POST':
         if request.form['name']:
@@ -341,6 +365,7 @@ def editMenuItem(restaurant_id, menu_id):
             editedItem.price = request.form['price']
         if request.form['course']:
             editedItem.course = request.form['course']
+        editedItem['email'] = login_session['email']
         session.add(editedItem)
         session.commit()
         flash("Menu Item Successfully Edited")
@@ -365,6 +390,8 @@ def deleteMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
     itemToDelete = session.query(MenuItem).filter_by(id=menu_id).one()
+    if itemToDelete.email != login_session['email']:
+        return render_template('notauthorized.html')
 
     if request.method == 'POST':
         session.delete(itemToDelete)

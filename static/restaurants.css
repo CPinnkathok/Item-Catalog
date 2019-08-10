@@ -120,3 +120,12 @@ input[type="text"] {
     font-size: 20px;
 
 }
+.not_authorized_login {
+    background-color: #DBE9EE;
+    font-family: 'Oswald', sans-serif;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}

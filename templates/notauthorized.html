@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+
+<header>
+        <strong><h1>You are NOT authorized to edit or delete this item</h1> </strong>
+        <strong><h1>Please login with valid user or return to all restaurants page</h1> </strong>
+</header>
+
+<div class = 'not_authorized_login'><a href = "{{ url_for('showLogin')}}">Login</a></div>
+			
+<div class = 'return'><a href = "{{url_for('showRestaurants')}}">Return to All Restaurants</a></div>
+
+{% endblock %}
