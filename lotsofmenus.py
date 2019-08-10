@@ -138,7 +138,8 @@ menuItem2 = MenuItem(
         'The meat is prized for its thin, crisp skin,'
         'with authentic versions of the dish serving mostly'
         'the skin and little meat, sliced in front of the'
-        'diners by the cook",price="$25'),
+        'diners by the cook'),
+    price="$25",
     course="Entree",
     restaurant=restaurant2)
 
